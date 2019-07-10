@@ -7,7 +7,6 @@ use App\Repositories\Repository;
 
 use App\User;
 
-
 class UsersController extends Controller
 {
     protected $model;
@@ -16,8 +15,10 @@ class UsersController extends Controller
     {
         $this->model = new Repository($user);
 
-        dd($this->model->findAllWhereIn('is_admin', [0]));
+        $users = $this->model->findAllWhereIn('is_admin', [0]);
 
-        d('--> users index');
+        return view('users.index', ['data' => [
+            'users' => $users
+        ]]);
     }
 }
