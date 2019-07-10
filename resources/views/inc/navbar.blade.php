@@ -11,6 +11,8 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+
+
                 @if(Auth::guard('web')->check())
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -26,6 +28,11 @@
                             </form>
                         </div>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users') }}">Users</a>
+                    </li>
+
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -34,7 +41,11 @@
                         <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
+
+
                 @if(Auth::guard('admin')->check())
+
+                    {{--
                     <li class="nav-item dropdown">
                         <a id="adminDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::guard('admin')->user()->name }} (ADMIN) <span class="caret"></span>
@@ -49,7 +60,10 @@
                             </form>
                         </div>
                     </li>
+                    --}}
+
                 @endif
+
             </ul>
         </div>
     </div>

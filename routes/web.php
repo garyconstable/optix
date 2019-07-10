@@ -29,6 +29,8 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('/admin', 'AdminController@index')->name('home')->middleware('verified');
 
+Route::get('/users', 'UsersController@index')->name('users')->middleware('verified');
+
 
 
 

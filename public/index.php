@@ -1,5 +1,17 @@
 <?php
 
+
+if ( ! function_exists('d'))
+{
+    function d($data = [], $die = false)
+    {
+        echo '<pre>'.print_r($data, true).'</pre>';
+        if($die){
+            die();
+        }
+    }
+}
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
