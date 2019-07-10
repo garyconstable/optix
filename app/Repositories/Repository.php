@@ -79,7 +79,12 @@ class Repository implements RepositoryInterface
 
     public function with($relations)
     {
-
         return $this->model->with($relations);
+    }
+
+
+    public function findAllWhereIn($cols = "", $values = [])
+    {
+        return $this->model->whereIn($cols, $values)->get();
     }
 }

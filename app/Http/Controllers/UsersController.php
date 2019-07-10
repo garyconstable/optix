@@ -14,12 +14,10 @@ class UsersController extends Controller
 
     public function index(User $user)
     {
-
         $this->model = new Repository($user);
 
-        dd( $this->model->all() );
+        dd($this->model->findAllWhereIn('is_admin', [0]));
 
         d('--> users index');
-
     }
 }
