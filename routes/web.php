@@ -31,6 +31,7 @@ Route::get('/admin', 'AdminController@index')->name('home')->middleware('verifie
 
 Route::get('/users', 'UsersController@index')->name('users')->middleware('verified');
 
+Route::get('/user/{id}', 'UserController@index')->name('user')->middleware('verified');
 
 
 

@@ -14,6 +14,13 @@
 
 
                 @if(Auth::guard('web')->check())
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users') }}">Users</a>
+                    </li>
+
+
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::guard('web')->user()->name }} <span class="caret"></span>
@@ -29,9 +36,7 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users') }}">Users</a>
-                    </li>
+
 
                 @else
                     <li class="nav-item">
