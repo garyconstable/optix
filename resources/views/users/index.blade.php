@@ -18,7 +18,7 @@
                         @foreach ($data['users'] as $user)
                             <tr>
                                 <td class="align-middle">{{ $user->name }}</td>
-                                <td class="align-middle">{{ $user->updated_at }}</td>
+                                <td class="align-middle">{{ date('l, dS F Y H:i:s', strtotime($user->updated_at)) }}</td>
                                 <td class="align-middle, text-right"><a class="btn btn-primary"
                                                                         href="/user/{{ $user->id }}">Visit</a></td>
                             </tr>
