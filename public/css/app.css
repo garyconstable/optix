@@ -10644,6 +10644,10 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: #fff;
+}
+
 .alert {
   z-index: 99;
   top: 60px;
@@ -10675,7 +10679,6 @@ a.text-dark:focus {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
   margin: 0 auto 0 auto;
   text-align: center;
 }
@@ -10696,5 +10699,36 @@ button {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #ff4738;
+  border-color: #ff4738;
+}
+
+.btn-primary:hover {
+  background-color: #ff1805;
+  border-color: #ff1805;
+}
+
+.navbar {
+  background: rgba(235, 237, 239, 0.35);
+  box-shadow: 0px -6px 11px rgba(0, 0, 0, 0.568627451);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1803921569);
+}
+
+.logo {
+  width: 200px;
+  position: relative;
+  top: 1px;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    text-align: center;
+    width: 100%;
+    margin: 20px 0 30px 0;
+  }
 }
 

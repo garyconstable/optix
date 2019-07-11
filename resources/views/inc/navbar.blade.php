@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="https://www.optixsolutions.co.uk/wp-content/uploads/2017/07/Optix-Logo.svg" class="logoimg"
-                 alt="Optix Solutions" style="width:200px;"/>
+            <img src="https://www.optixsolutions.co.uk/wp-content/uploads/2017/07/Optix-Logo.svg" class="logoimg logo"
+                 alt="Optix Solutions" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
