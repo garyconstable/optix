@@ -2,7 +2,7 @@
 
     AuthType Basic
     AuthName "Password Protected Area"
-    AuthUserFile .htpasswd
+    AuthUserFile /var/www/optix/public/.htpasswd
     Require valid-user
 
     <IfModule mod_negotiation.c>
