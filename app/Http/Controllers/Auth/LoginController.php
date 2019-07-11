@@ -38,17 +38,28 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Method to show the Login Form
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showLoginForm()
     {
-        return view('auth.login',[
+        return view('auth.login', [
             'title' => 'Login',
             'loginRoute' => 'login',
             'forgotPasswordRoute' => 'password.request',
         ]);
     }
 
-    public function logout(){
+    /**
+     * Method to logout the user and show a flash message
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
         Auth::logout();
-        return redirect('/')->with('status','User has been logged out!');
+        return redirect('/')->with('status', 'User has been logged out!');
     }
 }

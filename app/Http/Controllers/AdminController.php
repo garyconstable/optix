@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(){
+    /**
+     * Admin Index action / Method
+     */
+    public function index()
+    {
         dd('--> admin index controller');
     }
 }
