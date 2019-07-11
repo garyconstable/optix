@@ -1,4 +1,10 @@
 <IfModule mod_rewrite.c>
+
+    AuthType Basic
+    AuthName "Password Protected Area"
+    AuthUserFile .htpasswd
+    Require valid-user
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
