@@ -10650,9 +10650,9 @@ body {
 
 .alert {
   z-index: 99;
-  top: 60px;
-  right: 18px;
-  min-width: 30%;
+  left: 0;
+  top: -100px;
+  width: 100%;
   position: fixed;
   -webkit-animation: slide 0.5s forwards;
           animation: slide 0.5s forwards;
@@ -10660,13 +10660,13 @@ body {
 
 @-webkit-keyframes slide {
   100% {
-    top: 30px;
+    top: 0px;
   }
 }
 
 @keyframes slide {
   100% {
-    top: 30px;
+    top: 0px;
   }
 }
 
