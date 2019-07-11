@@ -3,8 +3,19 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="card">
+            <div class="col-12 col-md-9">
+
+                <div class="text-center mt-3 mb-5">
+                    <h1>Lorem ipsum dolor sit amet, consectetur </h1>
+                    <h2>unde omnis iste natus error sit voluptatem</h2>
+                    <p>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nul</p>
+                </div>
+
+
+                <div class="card mb-5">
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
