@@ -13,7 +13,30 @@
             </div>
             <div class="col-12 col-md-8">
                 <div class="mt-2 mb-5">
-                right
+
+                    <h4>Comments</h4>
+                    <p>necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                    Itaque earum rerum hic tenetur a sapiente  </p>
+
+                    <div class="list-group">
+                        @foreach ($data['comments'] as $comment)
+                            <div class="list-group-item list-group-item-action flex-column align-items-start ">
+                                <p class="mb-1">{{ $comment->comment }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <h4 class="mt-5">Leave a comment</h4>
+                    <p>rum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. </p>
+
+                    {{ Form::open(array( 'class' => 'form')) }}
+
+                    {{ Form::textarea('comment', NULL, ['class'=>'form-control', 'placeholder' => 'Comment']) }}
+
+                    {{ Form::submit('Save', ['class'=>'mt-3 btn btn-primary']) }}
+
+                    {{ Form::close() }}
+
                 </div>
             </div>
         </div>
