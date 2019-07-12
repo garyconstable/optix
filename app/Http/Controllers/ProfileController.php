@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Auth;
@@ -28,6 +29,7 @@ class ProfileController extends Controller
         $user = Auth()->user();
         $name = $request->input('name');
         $biography = $request->input('biography');
+        $comments = $this->getComments();
 
         if (empty($name)) {
             $name = $user->name;
@@ -37,12 +39,7 @@ class ProfileController extends Controller
             $biography = $user->biography;
         }
 
-        return view('profile.index', [
-            'data' => [
-                'name' => $name,
-                'biography' => $biography
-            ]
-        ]);
+        return $this->returnView($name, $biography, $comments);
     }
 
     /**
@@ -69,17 +66,40 @@ class ProfileController extends Controller
             $user->name = $request->input('name');
             $user->biography = $request->input('biography');
             $user->save();
-            return view('profile.index', [
-                'data' => [
-                    'name' => $user->name,
-                    'biography' => $user->biography
-                ]
-            ]);
-
+            return $this->returnView($user->name, $user->biography, $this->getComments());
         } catch (\Exception $ex) {
             return redirect('/home')
                 ->withErrors(['Save' => 'Could Not Save'])
                 ->withInput();
         }
+    }
+
+    /**
+     * Get Comments for the logged in user
+     *
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return Comment::whereIdFor(Auth()->user()->id)->get();
+    }
+
+    /**
+     * Return this view.
+     *
+     * @param string $name
+     * @param string $biography
+     * @param array $comments
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function returnView($name = '', $biography = '', $comments = [])
+    {
+        return view('profile.index', [
+            'data' => [
+                'name' => $name,
+                'biography' => $biography,
+                'comments' => $comments
+            ]
+        ]);
     }
 }

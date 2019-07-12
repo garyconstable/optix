@@ -15,7 +15,7 @@
                 </div>
 
 
-                <div class="card mb-5">
+                <div class="card mb-5" style="max-width: 500px;">
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
