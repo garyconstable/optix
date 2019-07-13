@@ -22,7 +22,7 @@ class UsersController extends Controller
      *
      * @var int
      */
-    private $perPage = 5;
+    private $perPage = 10;
 
     /**
      * @var User
