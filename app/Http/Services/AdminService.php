@@ -10,11 +10,16 @@ class AdminService
     /**
      * Is the Auth User Admin?
      *
+     * @param bool $userId
      * @return bool
      */
-    public static function isAdminUser()
+    public static function isAdminUser($userId = false)
     {
-        $user = Auth::user();
+        if ($userId) {
+            $user = User::findOrFail($userId);
+        } else {
+            $user = Auth::user();
+        }
         return (bool)$user->is_admin ? true : false;
     }
 
