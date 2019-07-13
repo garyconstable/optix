@@ -14,7 +14,6 @@
                     cillum dolore eu fugiat nul</p>
                 </div>
 
-
                 <div class="card mb-5" style="max-width: 500px;">
                     <div class="card-header">{{ __('Register') }}</div>
 

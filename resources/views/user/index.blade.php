@@ -19,11 +19,7 @@
                     Itaque earum rerum hic tenetur a sapiente  </p>
 
                     <div class="list-group">
-                        @foreach ($data['comments'] as $comment)
-                            <div class="list-group-item list-group-item-action flex-column align-items-start ">
-                                <p class="mb-1">{{ $comment->comment }}</p>
-                            </div>
-                        @endforeach
+                        @include('inc.comment')
                     </div>
 
                     <h4 class="mt-5">Leave a comment</h4>

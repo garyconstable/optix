@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Services\AdminService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Auth;
@@ -10,13 +11,21 @@ use Auth;
 class ProfileController extends Controller
 {
     /**
+     * Reference to our admin service
+     *
+     * @var
+     */
+    private $adminService;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AdminService $adminService)
     {
         $this->middleware('auth');
+        $this->adminService = $adminService;
     }
 
     /**
@@ -39,7 +48,14 @@ class ProfileController extends Controller
             $biography = $user->biography;
         }
 
-        return $this->returnView($name, $biography, $comments);
+        return view('profile.index', [
+            'data' => [
+                'name' => $name,
+                'biography' => $biography,
+                'comments' => $comments,
+                'is_admin' => $this->adminService->isAdminUser()
+            ]
+        ]);
     }
 
     /**
@@ -66,7 +82,7 @@ class ProfileController extends Controller
             $user->name = $request->input('name');
             $user->biography = $request->input('biography');
             $user->save();
-            return $this->returnView($user->name, $user->biography, $this->getComments());
+            return redirect()->back();
         } catch (\Exception $ex) {
             return redirect('/home')
                 ->withErrors(['Save' => 'Could Not Save'])
@@ -82,24 +98,5 @@ class ProfileController extends Controller
     public function getComments()
     {
         return Comment::whereIdFor(Auth()->user()->id)->get();
-    }
-
-    /**
-     * Return this view.
-     *
-     * @param string $name
-     * @param string $biography
-     * @param array $comments
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function returnView($name = '', $biography = '', $comments = [])
-    {
-        return view('profile.index', [
-            'data' => [
-                'name' => $name,
-                'biography' => $biography,
-                'comments' => $comments
-            ]
-        ]);
     }
 }
