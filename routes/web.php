@@ -11,23 +11,19 @@
 |
 */
 
-
-//--> Index
 Route::get('/', 'IndexController@index');
 
-//--> Auth
 Auth::routes(['verify' => true]);
 
-//--> Profile
 Route::get('/home', 'ProfileController@index')->name('home')->middleware('verified');
-Route::post('/home', 'ProfileController@store')->name('home')->middleware('verified');
+Route::post('/home', 'ProfileController@store')->name('bio')->middleware('verified');
 
-//--> Users List
 Route::get('/users', 'UsersController@index')->name('users')->middleware('verified');
 
-//--> User Details
 Route::get('/user/{id}', 'UserController@index')->name('user')->middleware('verified');
 Route::post('/user/{id}', 'UserController@store')->name('user')->middleware('verified');
 
-//--> Comment
 Route::get('/comment/delete/{id}', 'AdminController@deleteComment')->name('delete_comment')->middleware('verified');
+
+Route::get('/admin/enable/{id}', 'AdminController@enableUser')->name('enable_user')->middleware('verified');
+Route::get('/admin/disable/{id}', 'AdminController@disableUser')->name('disable_user')->middleware('verified');

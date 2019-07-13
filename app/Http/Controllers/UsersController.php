@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\User;
+use App\Services\AdminService;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -54,6 +56,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        AdminService::isUserBanned($user->id);
+
         $this->model = new Repository($this->user);
 
         $all = $this->model->findAllWhereIn('is_admin', [0]);
@@ -64,7 +69,8 @@ class UsersController extends Controller
             'users' => $users,
             'perPage' => $this->getPerPage(),
             'currentPage' => $this->getCurrentPage(),
-            'totalPages' => ceil($all->count() / $this->getPerPage())
+            'totalPages' => ceil($all->count() / $this->getPerPage()),
+            'is_admin' => \App\Services\AdminService::isAdminUser()
         ]]);
     }
 

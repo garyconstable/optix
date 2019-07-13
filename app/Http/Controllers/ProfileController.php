@@ -36,6 +36,8 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $user = Auth()->user();
+        AdminService::isUserBanned($user->id);
+
         $name = $request->input('name');
         $biography = $request->input('biography');
         $comments = $this->getComments();

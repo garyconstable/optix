@@ -22,7 +22,35 @@ class AdminController extends Controller
         abort(404);
     }
 
-    public function banUser()
+    /**
+     * Enable A user
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function enableUser(Request $request, $id)
     {
+        $result = \App\Services\AdminService::setBanned($id, 0);
+        if ($result) {
+            return redirect()->back();
+        }
+        abort(404);
+    }
+
+    /**
+     * Disable a user
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function disableUser(Request $request, $id)
+    {
+        $result = \App\Services\AdminService::setBanned($id, 1);
+        if ($result) {
+            return redirect()->back();
+        }
+        abort(404);
     }
 }
