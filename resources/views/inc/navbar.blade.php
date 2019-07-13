@@ -1,9 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
+
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="https://www.optixsolutions.co.uk/wp-content/uploads/2017/07/Optix-Logo.svg" class="logoimg logo"
                  alt="Optix Solutions" />
         </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -15,22 +17,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('users') }}"><i class="fas fa fa-list"></i> Users</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <i class="fas fa fa-user"></i> {{ Auth::guard('web')->user()->name }} <span
-                                class="caret"></span>
+                    <li class="nav-item">
+                        <a href="{{route('home')}}" class="nav-link"><i class="fas fa fa-user"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"
+                           onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                            <i class="fas fa fa-times-circle"></i> Logout
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="{{route('home')}}" class="dropdown-item">Dashboard</a>
-                            <a class="dropdown-item" href="#"
-                               onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                 @else
                     <li class="nav-item">
@@ -39,26 +36,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
-                @endif
-                @if(Auth::guard('admin')->check())
-
-                    {{--
-                    <li class="nav-item dropdown">
-                        <a id="adminDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::guard('admin')->user()->name }} (ADMIN) <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="adminDropdown">
-                            <a href="{{route('admin.home')}}" class="dropdown-item">Dashboard</a>
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#admin-logout-form').submit();">
-                                Logout
-                            </a>
-                            <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    --}}
-
                 @endif
             </ul>
         </div>

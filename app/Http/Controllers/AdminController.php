@@ -7,10 +7,22 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     /**
-     * Admin Index action / Method
+     * Delete a comment
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function index()
+    public function deleteComment(Request $request, $id)
     {
-        dd('--> admin index controller');
+        $result = \App\Services\CommentService::deleteComment($id);
+        if ($result) {
+            return redirect()->back();
+        }
+        abort(404);
+    }
+
+    public function banUser()
+    {
     }
 }

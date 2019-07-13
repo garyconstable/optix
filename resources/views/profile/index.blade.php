@@ -3,13 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-
             <section class="col-12 ">
                 <h1 class="my-3 display-5">Welcome, {{$data['name']}}</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati</p>
             </section>
-
             <section class="col-12 col-md-4">
                 <div class="cardd text-left mb-5">
                     <div>
@@ -38,18 +36,12 @@
                     </div>
                 </div>
             </section>
-
             <section class="col-12 col-md-8">
                 <h4 class="my-3">Comments</h4>
                 <div class="list-group mb-5">
-                    @foreach ($data['comments'] as $comment)
-                        <div class="list-group-item list-group-item-action flex-column align-items-start ">
-                            <p class="mb-1">{{ $comment->comment }}</p>
-                        </div>
-                    @endforeach
+                    @include('inc.comment')
                 </div>
             </section>
-
         </div>
     </div>
 @endsection

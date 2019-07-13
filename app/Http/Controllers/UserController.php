@@ -84,7 +84,8 @@ class UserController extends Controller
         return view('user.index', [
             'data' => [
                 'comments' => $this->commentService->getUserComments($id),
-                'user' => $user
+                'user' => $user,
+                'is_admin' => \App\Services\AdminService::isAdminUser()
             ]
         ]);
     }
