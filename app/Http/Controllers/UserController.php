@@ -7,6 +7,7 @@ use App\Repositories\Repository;
 use App\User;
 use App\Comment;
 use App\Services\CommentService;
+use App\Services\AdminService;
 
 class UserController extends Controller
 {
@@ -36,6 +37,7 @@ class UserController extends Controller
      */
     public function index($id)
     {
+        AdminService::isUserBanned($id);
         return $this->returnView($id);
     }
 

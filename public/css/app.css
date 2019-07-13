@@ -10727,8 +10727,15 @@ button {
 @media (max-width: 768px) {
   .navbar-brand {
     text-align: center;
-    width: 100%;
+    width: auto;
     margin: 20px 0 30px 0;
+    float: left;
   }
+}
+
+.navbar-toggler {
+  float: right;
+  width: auto;
+  margin-right: 10px;
 }
 
