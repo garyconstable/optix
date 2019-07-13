@@ -11,6 +11,7 @@ If logged in as Admin (user 201) Additional buttons are rendered to delete comme
 
 A banned user will 404 as do some of the admin functions if not authenticated.
 
+A user can be set as admin by editing the users row (is_admin)
 #### URL
 ```
 https://optix.garyconstable.dev
